@@ -1,74 +1,47 @@
 "use client"
-import Form from "@/components/Form";
-import { useState } from "react";
+import Form from '@/components/Form'
+import { title } from 'process'
+import  { useState } from 'react'
 
-type todoProps= {
-  title:string;
-  description:string;
-  completed:boolean;
+type  myProps= {
+  title : string,
+  description : string,
+  completed:boolean 
 }
-export default function Home() {
-  const  [todo, setTodo] = useState<todoProps[]>([
-    { title: "Task 1", description: "This is task 1", completed:false}
-  ])
-
-  //   const [title,setTitle] = useState<string>("")
-  //   const [description,setDescription] = useState<string>("")
-  
-  //   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
-  //     e.preventDefault()
-  //     setTodo([...todo, {title, description, completed: false}])
-  //     setTitle("")
-  //     setDescription("")
-  //   }
+const Home = () => {
+    const [todo, setTodo] = useState<myProps[]>([
+      {title: 'Task 1', description: 'Description 1', completed: false},
+    ])
 
   return (
-   <div>
-        <div>
-         { todo.map(({ title, description, completed},index)=>{
-           return (
-            <div key={index}>
-              <span>{title} </span>
-              <span>{description}</span>
-              <input type="checkbox"
-               checked={completed} 
-              //  onChange={e=>setTodo(prev=> {
-              //    return [...prev.slice(0,index), {...prev[index], completed:!prev[index].completed},...prev.slice(index+1)]
-              //   })
-              //  }
-        
-               onChange={()=>setTodo(todo.map((t,i)=>i===index?
-                {...t, completed:!t.completed}:t ))} 
-                />  
-                completed: {completed? "Yes" : "No"}  
-                
-                <button onClick={()=>setTodo(todo.filter((_,i)=>i!==index))}>
-                  Delete</button>
-                    <br/>  <hr/>
-              
-            </div>
-           )
-         }) 
+    <div>
+      {todo.map(({title, description, completed},index)=>{
+        return (
+          <div key={index} >
+            <h1>{title}</h1>
+            <p>{description}</p>
+            <input  type="checkbox" checked={completed}
+              onChange={(e)=>setTodo( todo.map((item, i) => i === index ? {...item, completed: e.target.checked} : item)
 
-         }
-        </div>
+              )}
+            />
+           
+                  <span>{completed? "Yes":"NO"} </span>
 
+                  {/* delete button for todo  */}
+                  <button onClick={()=>setTodo(todo.filter((item, i) => i !== index))}>delete</button>
+          </div>
+        )
+      })}
 
-        {/* building the form  */}
+                    <Form  onCreate={(title,description)=>{
+                      setTodo([...todo, {title, description, completed: false}])
+                    }} />
 
-         <div>
-          <Form/>
+     
 
-          {/* <form action=""  onSubmit={submitForm}>
-            <label htmlFor="title">Title</label>
-            <input type="text"   value={title} onChange={e=>setTitle(e.target.value)} placeholder="Enter title"/>
-            <label htmlFor="description">Description</label>
-            <input type="text"  value={description} onChange={e=>setDescription(e.target.value)} placeholder="Enter description"/>
-            <button type="submit">Submit</button>
-
-          </form> */}
-         </div>
-
-   </div>
-  );
+    </div>
+  )
 }
+
+export default Home
