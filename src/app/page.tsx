@@ -15,7 +15,7 @@ const Home = () => {
             return (
               <TodoItem 
                     key={_id}
-                    id={_id}
+                    // id={_id}
                     title={title}
                     description={description} 
                     completed={completed}
@@ -73,7 +73,7 @@ export const TodoItem=({title, description,completed, onChangeCompleted,onRemove
         </div>
 
         </div>
-        <button onClick={() => onRemove({})} className="font-semibold text-red-600">
+        <button onClick={() => onRemove()} className="font-semibold text-red-600">
             Delete
           </button>
         
