@@ -38,8 +38,6 @@ const Home = () => {
           onCreate={(title,description)=>{setTodo([...todo, {title, description, completed: false}]) }}
            />
 
-     
-
     </div>
   )
 }
@@ -56,20 +54,35 @@ export const TodoItem=({title, description,completed, onChangeCompleted,onRemove
     onRemove : () => void
   })=>{
     return (
-      <div>
-     
-     <div>
-            <h1>{title}</h1>
-            <p>{description}</p>
-            <input  type="checkbox" checked={completed}
+      <div className='max-w-lg mx-auto rounded-md justify-center p-3 mt-2 border-2 border-gray-300'>
+        <div className='flex justify-between'>
+        <div className='flex gap-3'>
+        <div>
+        <input 
+              className='mt-5'
+             type="checkbox" checked={completed}
               onChange={e=>onChangeCompleted(e.target.checked)}
             />
+        </div>
+        <div> 
+        <h1  className='font-bold text-lg'>{title}</h1>
+        <p>{description}</p>
+        </div>
+        </div>
+        
+        <button onClick={()=>onRemove()}
+            className='font-semibold text-red-600' >
+          Delete
+          </button>
+
+        </div>
+        
            
-                  <span>{completed? "Yes":"NO"} </span>
+           
+           
+                  {/* <span>{completed? "Yes":"NO"} </span> */}
 
                   {/* delete button for todo  */}
-                  <button onClick={()=>onRemove()}>delete</button>
           </div>
-      </div>
     )
 }
