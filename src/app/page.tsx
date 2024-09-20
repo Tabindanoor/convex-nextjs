@@ -15,28 +15,28 @@ const Home = () => {
 
   return (
     <div>
-      {todo.map(({title, description, completed},index)=>{
-        return (
-          <div key={index} >
-            <h1>{title}</h1>
-            <p>{description}</p>
-            <input  type="checkbox" checked={completed}
-              onChange={(e)=>setTodo( todo.map((item, i) => i === index ? {...item, completed: e.target.checked} : item)
+          {todo.map(({title, description, completed},index)=>{
+            return (
+              <TodoItem 
+                    key={index}
+                    title={title}
+                    description={description} 
+                    completed={completed}
+                    onChangeCompleted={(newValue)=>{
+                      setTodo(todo.map((item, i) => i === index? {...item, completed: newValue} : item))
+                    }}
 
-              )}
-            />
-           
-                  <span>{completed? "Yes":"NO"} </span>
+                    onRemove={()=>{
+                      setTodo(todo.filter((item, i) => i!== index))
+                    }}  
 
-                  {/* delete button for todo  */}
-                  <button onClick={()=>setTodo(todo.filter((item, i) => i !== index))}>delete</button>
-          </div>
-        )
-      })}
+                />
+            )
+          })}
 
-                    <Form  onCreate={(title,description)=>{
-                      setTodo([...todo, {title, description, completed: false}])
-                    }} />
+          <Form  
+          onCreate={(title,description)=>{setTodo([...todo, {title, description, completed: false}]) }}
+           />
 
      
 
@@ -45,3 +45,31 @@ const Home = () => {
 }
 
 export default Home
+
+
+export const TodoItem=({title, description,completed, onChangeCompleted,onRemove}:
+  {
+    title: string,
+    description: string,
+    completed: boolean,
+    onChangeCompleted: (newValue:boolean) => void,
+    onRemove : () => void
+  })=>{
+    return (
+      <div>
+     
+     <div>
+            <h1>{title}</h1>
+            <p>{description}</p>
+            <input  type="checkbox" checked={completed}
+              onChange={e=>onChangeCompleted(e.target.checked)}
+            />
+           
+                  <span>{completed? "Yes":"NO"} </span>
+
+                  {/* delete button for todo  */}
+                  <button onClick={()=>onRemove()}>delete</button>
+          </div>
+      </div>
+    )
+}

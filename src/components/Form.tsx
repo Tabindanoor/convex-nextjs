@@ -11,10 +11,9 @@ const Form = ({onCreate}:myProps) => {
     const submitForm=(e:React.FormEvent)=>{
         e.preventDefault()
         if(title && description){
-        //   setTodo([...todo, {title, description, completed: false}])
           onCreate(title, description)
-          setTitle('')
-          setDescription('')
+          setTitle("")
+          setDescription("")
         }else{
           alert("Please fill all fields")
         }
@@ -26,13 +25,18 @@ const Form = ({onCreate}:myProps) => {
         
 
         <div >
-        <form action="" onSubmit={submitForm}>
+        <form onSubmit={submitForm}>
           <label htmlFor="title">Title</label>
-          <input type="text" placeholder="Enter title"
-          onChange={e=>setTitle(e.target.value)} />
+          <input  
+              type="text"
+              placeholder="Enter title"
+             onChange={e=>setTitle(e.target.value)} 
+             value={title}/>
           <label htmlFor="description">Description</label>
-          <input type="text" placeholder="Enter description"
-          onChange={e=>setDescription(e.target.value)} />
+          <input type="text"
+           placeholder="Enter description"
+          onChange={e=>setDescription(e.target.value)}
+            value={description} />
           <button type="submit">Add Todo</button>
         </form>
       </div>
