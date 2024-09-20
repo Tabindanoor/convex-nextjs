@@ -1,41 +1,44 @@
 "use client"
 import Form from '@/components/Form'
-import { title } from 'process'
 import  { useState } from 'react'
+import { api } from '../../convex/_generated/api'
+import { useMutation, useQuery } from 'convex/react'
 
-type  myProps= {
-  title : string,
-  description : string,
-  completed:boolean 
-}
 const Home = () => {
-    const [todo, setTodo] = useState<myProps[]>([
-      {title: 'Task 1', description: 'Description 1', completed: false},
-    ])
-
+  
+    const deleteTodo= useMutation(api.functions.deleteTodo)
+    const todo = useQuery(api.functions.getTodos)
+    const updateTodo = useMutation(api.functions.updateTodo)
   return (
     <div>
-          {todo.map(({title, description, completed},index)=>{
+          {todo?.map(({_id,title, description, completed},index)=>{
             return (
               <TodoItem 
-                    key={index}
+                    key={_id}
+                    id={_id}
                     title={title}
                     description={description} 
                     completed={completed}
                     onChangeCompleted={(newValue)=>{
-                      setTodo(todo.map((item, i) => i === index? {...item, completed: newValue} : item))
+                      updateTodo({id:_id,    completed: newValue  })
                     }}
-
                     onRemove={()=>{
-                      setTodo(todo.filter((item, i) => i!== index))
-                    }}  
+                      deleteTodo({id:_id})
+                    }}
+                    // onChangeCompleted={(newValue)=>{
+                    //   setTodo(todo.map((item, i) => i === index? {...item, completed: newValue} : item))
+                    // }}
+
+                    // onRemove={()=>{
+                    //   setTodo(todo.filter((item, i) => i!== index))
+                    // }}  
 
                 />
             )
           })}
 
           <Form  
-          onCreate={(title,description)=>{setTodo([...todo, {title, description, completed: false}]) }}
+          // onCreate={(title,description)=>{setTodo([...todo, {title, description, completed: false}]) }}
            />
 
     </div>
@@ -68,12 +71,16 @@ export const TodoItem=({title, description,completed, onChangeCompleted,onRemove
         <h1  className='font-bold text-lg'>{title}</h1>
         <p>{description}</p>
         </div>
+
         </div>
+        <button onClick={() => onRemove({})} className="font-semibold text-red-600">
+            Delete
+          </button>
         
-        <button onClick={()=>onRemove()}
+        {/* <button onClick={()=>onRemove()}
             className='font-semibold text-red-600' >
           Delete
-          </button>
+          </button> */}
 
         </div>
         

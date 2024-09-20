@@ -1,17 +1,22 @@
-import React, { useState } from 'react'
-type myProps={
-    onCreate : (title:string,description:string) => void
+import { useState } from 'react'
+import { useMutation, useQuery } from 'convex/react'
+import { api } from '../../convex/_generated/api'
 
-}
+const Form = () => {
 
-const Form = ({onCreate}:myProps) => {
+
     const [title, setTitle] =  useState('')
     const [description, setDescription] = useState('')
+    const todo = useQuery(api.functions.getTodos)
+    // const updateTodo = useMutation(api.functions.updateTodo)
 
-    const submitForm=(e:React.FormEvent)=>{
+    const createTodo = useMutation(api.functions.createTodos)
+
+    const submitForm=async(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
         if(title && description){
-          onCreate(title, description)
+         await createTodo({title,description,completed:false})
+          // onCreate(title, description)
           setTitle("")
           setDescription("")
         }else{
@@ -21,10 +26,7 @@ const Form = ({onCreate}:myProps) => {
 
 
   return (
-   
-        
-
-        <form onSubmit={submitForm}>
+     <form onSubmit={submitForm}>
         <div      className='mt-3 max-w-lg mx-auto flex flex-col gap-2'    >
           <label className=' font-semibold ' htmlFor="title">Title</label>
           <input  
