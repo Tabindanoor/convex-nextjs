@@ -1,5 +1,6 @@
+"use client"
 import { useState } from 'react'
-import { useMutation, useQuery } from 'convex/react'
+import { useMutation } from 'convex/react'
 import { api } from '../../convex/_generated/api'
 
 const Form = () => {
@@ -7,7 +8,7 @@ const Form = () => {
 
     const [title, setTitle] =  useState('')
     const [description, setDescription] = useState('')
-    const todo = useQuery(api.functions.getTodos)
+    // const todo = useQuery(api.functions.getTodos)
     // const updateTodo = useMutation(api.functions.updateTodo)
 
     const createTodo = useMutation(api.functions.createTodos)
