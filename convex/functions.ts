@@ -55,7 +55,9 @@ export const createTodos = mutation({
     })
 
     export const deleteTodo = mutation({
-        args:{id:v.id("tasks")},
+        args:{
+          id:v.id("tasks")
+        },
         handler:async(ctx,args)=>{
             await ctx.db.delete(args.id);
         },
