@@ -104,7 +104,7 @@
 // }
 
 
-// pages/index.tsx (or page.tsx)
+
 "use client"
 import Form from '@/components/Form'
 import { useMutation, useQuery } from 'convex/react'
