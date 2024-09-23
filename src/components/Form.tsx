@@ -8,16 +8,13 @@ const Form = () => {
 
     const [title, setTitle] =  useState('')
     const [description, setDescription] = useState('')
-    // const todo = useQuery(api.functions.getTodos)
-    // const updateTodo = useMutation(api.functions.updateTodo)
-
+   
     const createTodo = useMutation(api.functions.createTodos)
 
     const submitForm=async(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
         if(title && description){
          await createTodo({title,description,completed:false})
-          // onCreate(title, description)
           setTitle("")
           setDescription("")
         }else{
