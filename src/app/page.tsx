@@ -107,29 +107,55 @@
 
 "use client"
 import Form from '@/components/Form'
-import { useMutation, useQuery } from 'convex/react'
-import { api } from '../../convex/_generated/api'
-import { TodoItem } from '@/components/TodoItem'
+import { TodoList } from '@/components/TodoItem'
+import { SignInButton, UserButton } from '@clerk/clerk-react'
+import { Authenticated, Unauthenticated } from 'convex/react'
+
+// import { useMutation, useQuery } from 'convex/react'
+// import { api } from '../../convex/_generated/api'
+// import { TodoItem } from '@/components/TodoItem'
+
+// const TodoList=()=>{
+//   const deleteTodo = useMutation(api.functions.deleteTodo)
+//   const todo = useQuery(api.functions.getTodos)
+//   const updateTodo = useMutation(api.functions.updateTodo)
+//   return(
+//     <div>
+//     {todo?.map(({ _id, title, description, completed }) => (
+//       <TodoItem
+//         key={_id}
+//         id={_id}
+//         title={title}
+//         description={description}
+//         completed={completed}
+//         onChangeCompleted={(newValue) => updateTodo({ id: _id, completed: newValue })}
+//         onRemove={() => deleteTodo({ id: _id })}
+//       />
+//     ))}
+//     </div>
+//   )
+// }
 
 const Home = () => {
-  const deleteTodo = useMutation(api.functions.deleteTodo)
-  const todo = useQuery(api.functions.getTodos)
-  const updateTodo = useMutation(api.functions.updateTodo)
+  // const deleteTodo = useMutation(api.functions.deleteTodo)
+  // const todo = useQuery(api.functions.getTodos)
+  // const updateTodo = useMutation(api.functions.updateTodo)
 
   return (
     <div>
-      {todo?.map(({ _id, title, description, completed }) => (
-        <TodoItem
-          key={_id}
-          id={_id}
-          title={title}
-          description={description}
-          completed={completed}
-          onChangeCompleted={(newValue) => updateTodo({ id: _id, completed: newValue })}
-          onRemove={() => deleteTodo({ id: _id })}
-        />
-      ))}
-      <Form />
+      <Authenticated> 
+        <div className="flex justify-between max-w-lg mx-auto ">
+            <p className='text-2xl text-zinc-900 font-semibold text-center mt-2'>Todo List</p>
+            <UserButton/>
+        </div> 
+          <TodoList/>
+          <Form />
+      </Authenticated>
+
+      <Unauthenticated>
+        <SignInButton/>
+      </Unauthenticated>
+      
     </div>
   )
 }
