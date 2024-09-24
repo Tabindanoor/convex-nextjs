@@ -8,21 +8,30 @@ const Form = () => {
 
     const [prompt, setPrompt] =  useState('')
    
+    const [loading, setLoading] = useState(false)
     const createTodo = useAction(api.action.createTodos)
 
     const submitForm=async(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
         try {
+            setLoading(true)
             const todo = await createTodo({prompt})
             console.log(todo)
+            setPrompt("")
         } catch (error) {
             
             console.error('Error creating todo:', error)
 
         }
+        finally{
+            setLoading(false)
+        }
     
       }
-
+if(loading){
+    return <p>Loading...</p>  // Display loading message while waiting for API response
+ } else {
+}
 
   return (
      <form onSubmit={submitForm}>
