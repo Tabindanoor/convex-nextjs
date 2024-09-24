@@ -29,7 +29,8 @@ const Form = () => {
     
       }
 if(loading){
-    return <p>Loading...</p>  // Display loading message while waiting for API response
+    return         <div      className='mt-3 max-w-lg mx-auto flex flex-col gap-2'    >Loading</div>
+
  } else {
 }
 
