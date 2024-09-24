@@ -3,6 +3,7 @@
 
 "use client"
 import Form from '@/components/Form'
+import AIForm from '@/components/generate-todo-form'
 import { TodoList } from '@/components/TodoItem'
 import { SignInButton, UserButton } from '@clerk/clerk-react'
 import { Authenticated, Unauthenticated } from 'convex/react'
@@ -19,6 +20,7 @@ const Home = () => {
             <UserButton/>
         </div> 
           <TodoList/>
+          <AIForm/>
           <Form />
       </Authenticated>
 
