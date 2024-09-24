@@ -10,11 +10,3 @@ export default defineSchema({
   }).index("by_user_id",["userId"])
 });
 
-// export default defineSchema({
-//     tasks: defineTable({
-//       title: v.string(),
-//       description: v.string(),
-//       completed: v.optional(v.boolean()), // Makes `completed` optional
-//     }),
-//   });
-  
