@@ -28,7 +28,8 @@ export const TodoList=()=>{
 }
 
 export const TodoItem = ({
-  id, title, description, completed, onChangeCompleted, onRemove
+//   id,  title, description, completed, onChangeCompleted, onRemove
+    title, description, completed, onChangeCompleted, onRemove
 }: {
   id: Id<"tasks">,
   title: string,
@@ -37,7 +38,7 @@ export const TodoItem = ({
   onChangeCompleted: (newValue: boolean) => void,
   onRemove: () => void
 }) => {
-  const updateTodo = useMutation(api.functions.updateTodo)
+//   const updateTodo = useMutation(api.functions.updateTodo)
   return (
     <div className='max-w-lg mx-auto rounded-md justify-center p-3 mt-2 border-2 border-gray-300'>
       <div className='flex justify-between'>
