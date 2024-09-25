@@ -1,6 +1,3 @@
-
-
-
 "use client"
 import Form from '@/components/Form'
 import AIForm from '@/components/generate-todo-form'
