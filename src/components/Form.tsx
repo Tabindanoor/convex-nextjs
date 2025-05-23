@@ -4,8 +4,6 @@ import { useMutation } from 'convex/react'
 import { api } from '../../convex/_generated/api'
 
 const Form = () => {
-
-
     const [title, setTitle] =  useState('')
     const [description, setDescription] = useState('')
    
@@ -21,8 +19,6 @@ const Form = () => {
           alert("Please fill all fields")
         }
       }
-
-
   return (
      <form onSubmit={submitForm}>
         <div      className='mt-3 max-w-lg mx-auto flex flex-col gap-2'    >
