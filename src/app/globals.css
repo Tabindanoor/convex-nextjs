@@ -25,3 +25,49 @@ body {
     text-wrap: balance;
   }
 }
+
+
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #ece9e6, #ffffff);
+}
+
+.animated-button {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1.2rem;
+  padding: 15px 30px;
+  background: linear-gradient(135deg, #4f9aff, #007bff);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-20deg);
+  transition: all 0.5s ease;
+}
+
+.animated-button:hover::before {
+  left: 100%;
+}
+
+.animated-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 123, 255, 0.4);
+}

@@ -32,7 +32,7 @@ const Home = () => {
     <p className="text-gray-500 mb-6 text-sm">
       Please sign in to continue to your dashboard
     </p>
-    <button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-lg py-3 rounded-xl shadow-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-indigo-300 active:scale-95">
+    <button className="w-full bg-gradient-to-r animated-button from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-lg py-3 rounded-xl shadow-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-indigo-300 active:scale-95">
       Sign in to continue
     </button>
   </div>
