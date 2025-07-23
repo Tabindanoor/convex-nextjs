@@ -24,7 +24,6 @@ const Home = () => {
       <Unauthenticated>
         <SignInButton>
 
-          {/* simpel */}
           
   {/* <div className="min-h-screen bg-gradient-to-br from-blue-100 via-white to-indigo-100 flex items-center justify-center">
   <div className="text-center p-8 bg-white rounded-2xl shadow-2xl border border-gray-200 max-w-sm w-full">
