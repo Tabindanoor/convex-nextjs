@@ -7,8 +7,6 @@ import { Authenticated, Unauthenticated } from 'convex/react'
 
 
 const Home = () => {
-
-
   return (
     <div>
       <Authenticated> 
@@ -23,22 +21,6 @@ const Home = () => {
 
       <Unauthenticated>
         <SignInButton>
-
-          
-  {/* <div className="min-h-screen bg-gradient-to-br from-blue-100 via-white to-indigo-100 flex items-center justify-center">
-  <div className="text-center p-8 bg-white rounded-2xl shadow-2xl border border-gray-200 max-w-sm w-full">
-    <h1 className="text-3xl font-bold text-gray-800 mb-4 font-sans">
-      Welcome Back
-    </h1>
-    <p className="text-gray-500 mb-6 text-sm">
-      Please sign in to continue to your dashboard
-    </p>
-    <button className="w-full bg-gradient-to-r animated-button from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-lg py-3 rounded-xl shadow-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-indigo-300 active:scale-95">
-      Sign in to continue
-    </button>
-  </div>
-</div> */}
-
 <div className="min-h-screen relative bg-gradient-to-br from-blue-100 via-white to-indigo-100 flex items-center justify-center overflow-hidden">
   {/* Decorative floating shapes */}
   <div className="absolute -top-20 -left-20 w-72 h-72 bg-blue-200 opacity-30 rounded-full filter blur-3xl animate-pulse-slow"></div>
@@ -60,16 +42,9 @@ const Home = () => {
    
   </div>
 </div>
-
-
-
-      
         </SignInButton>
       </Unauthenticated>
-
-
-      
-    </div>
+   </div>
   )
 }
 
