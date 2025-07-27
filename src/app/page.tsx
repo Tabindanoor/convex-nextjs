@@ -5,7 +5,6 @@ import { TodoList } from '@/components/TodoItem'
 import { SignInButton, UserButton } from '@clerk/clerk-react'
 import { Authenticated, Unauthenticated } from 'convex/react'
 
-
 const Home = () => {
   return (
     <div>
